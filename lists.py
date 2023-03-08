@@ -21,3 +21,11 @@ for meal in menu:
             print(ingredient)
 
 
+squares = [1, 4, 9, 16, 25]
+squares.append(36)
+
+print(squares)
+
+print(squares[2:4])
+
+print(len(squares))
