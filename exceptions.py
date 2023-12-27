@@ -10,7 +10,7 @@ except ValueError:
 try:
     result = x / y
 except ZeroDivisionError:
-    print("Error: Cannot divide by zero")
+    print("Error: Cannot dividez by zero")
     sys.exit(1)
 
 print(f"{x} divided by {y} = {result}")
