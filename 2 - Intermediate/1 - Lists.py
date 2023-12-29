@@ -1,4 +1,4 @@
-# Lists: ordered, mutable, allows duplicate elecments
+# Lists: ordered, mutable, allows duplicate elements
 mylist = ["banana", "cheery", "apple"]
 print(mylist)
 
@@ -6,7 +6,7 @@ print(mylist)
 mylist2 = list()
 print(mylist2)
 
-# Lists can contain integers, Booleans, astrings and Allows Duplicates
+# Lists can contain integers, Booleans, strings and Allows Duplicates
 mylist2 = [5, True, "apple", "apple"]
 print(mylist2)
 
@@ -58,7 +58,7 @@ mylist.insert(1, "blueberry")
 print(mylist)
 print()
 
-# remove last element
+# Remove last element
 print("*** Remove last element ***")
 item = mylist.pop()
 print(item)
@@ -100,14 +100,14 @@ print(mylist)
 print(new_list)
 print()
 
-# Create new list with same values
-print("*** Create new list with same values ***")
+# Create new list with same values in each element
+print("*** Create new list with same values in each element ***")
 mylist = [0] * 5
 print(mylist)
 print()
 
-# Concatinate 2 lists
-print("*** Concatinate 2 lists ***")
+# Concatenate 2 lists
+print("*** Concatenate 2 lists ***")
 mylist2 = [1, 2, 3, 4, 5]
 newlist = mylist + mylist2
 print(mylist2)
