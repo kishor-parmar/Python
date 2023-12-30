@@ -1,4 +1,6 @@
 # Lists: ordered, mutable, allows duplicate elements
+
+print("*** Creating a List ***")
 mylist = ["banana", "cheery", "apple"]
 print(mylist)
 
