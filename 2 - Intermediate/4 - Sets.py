@@ -36,15 +36,15 @@ myset.discard(99)
 print(myset)
 print()
 
-# Empting a set
-print("*** Empting a set ***")
+# Emptying a set
+print("*** Emptying a set ***")
 
 myset.clear()
 print(myset)
 print()
 
-# Removing an arbitory element from the set
-print("*** Removing an arbitory element from the set ***")
+# Removing an arbitrary element from the set
+print("*** Removing an arbitrary element from the set ***")
 
 myset = set()
 myset.add(1)
