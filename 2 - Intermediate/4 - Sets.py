@@ -183,7 +183,7 @@ print(setB)
 print()
 
 # Frozen Sets
-print("*** Frozen Sdets ***")
+print("*** Frozen Sets ***")
 
 a = frozenset([1, 2, 3, 4])
 print(a)
