@@ -111,8 +111,8 @@ setA.update(setB)
 print(setA)
 print()
 
-# Intersection of two sets
-print("*** Intersection of two sets ***")
+# Intersection of two sets with update
+print("*** Intersection of two sets with update ***")
 
 setA = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 setB = {1, 2, 3, 10, 11, 12}
@@ -121,8 +121,8 @@ setA.intersection_update(setB)
 print(setA)
 print()
 
-# Difference of two sets
-print("*** Difference of two sets ***")
+# Difference of two sets with update
+print("*** Difference of two sets with update ***")
 
 setA = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 setB = {1, 2, 3, 10, 11, 12}
@@ -131,8 +131,8 @@ setA.difference_update(setB)
 print(setA)
 print()
 
-# Symmetric Difference of two sets
-print("*** Symmetric Difference of two sets ***")
+# Symmetric Difference of two sets with update
+print("*** Symmetric Difference of two sets with update ***")
 
 setA = {1, 2, 3, 4, 5, 6, 7, 8, 9}
 setB = {1, 2, 3, 10, 11, 12}
