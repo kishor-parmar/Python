@@ -182,7 +182,7 @@ print(setB)
 
 print()
 
-# Frozen Ssets
+# Frozen Sets
 print("*** Frozen Sets ***")
 
 a = frozenset([1, 2, 3, 4])
