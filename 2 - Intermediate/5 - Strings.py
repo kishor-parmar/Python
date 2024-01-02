@@ -27,8 +27,8 @@ substring = my_string[1:4]
 print(substring)
 print()
 
-# Concatinating two strings
-print("*** Concatinating two strings ***")
+# Concatenating two strings
+print("*** Concatenating two strings ***")
 
 greeting = "Hello"
 name = "Foobar"
