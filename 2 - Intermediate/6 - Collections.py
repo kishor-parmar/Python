@@ -57,7 +57,7 @@ print(d["z"])
 print()
 
 # Deque
-print("*** Deque ***")
+print("*** Dequse ***")
 
 from collections import deque
 
