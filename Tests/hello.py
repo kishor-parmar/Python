@@ -1,6 +1,9 @@
+from icecream import ic
+
+
 def main():
     name = input("What's your name? ")
-    print(hello(name))
+    ic(hello(name))
 
 
 def hello(to="world"):
