@@ -64,3 +64,59 @@ a = list("ABCDEFGHI")
 random.shuffle(a)
 print(a)
 print()
+
+# Seeding with 1
+print("*** Seeding with 1 ***\n")
+
+random.seed(1)
+print(random.random())
+print(random.uniform(1, 10))
+print(random.choice(list("ABCDEFGHI")))
+print()
+
+# Re-seeding with 42
+print("\n*** Re-seeding with 42 ***\n")
+random.seed(42)  # Re-seed
+
+print(random.random())
+print(random.uniform(1, 10))
+print(random.choice(list("ABCDEFGHI")))
+print()
+
+# Re-seeding with 1
+print("\n*** Re-seeding with 1 ***\n")
+random.seed(1)  # Re-seed
+
+print(random.random())
+print(random.uniform(1, 10))
+print(random.choice(list("ABCDEFGHI")))
+print()
+
+# Re-seeding with 42
+print("*** Re-seeding with 42 ***\n")
+random.seed(42)  # Re-seed
+
+print(random.random())
+print(random.uniform(1, 10))
+print(random.choice(list("ABCDEFGHI")))
+print()
+
+import secrets
+
+# random integer in range [0, n).
+print("*** random integer in range [0, n) ***")
+a = secrets.randbelow(10)
+print(a)
+print()
+
+# return an integer with k random bits
+print("*** return an integer with k random bits ***")
+a = secrets.randbits(5)
+print(a)
+print()
+
+# choose a random element from a sequence
+print("*** choose a random element from a sequence ***")
+a = secrets.choice(list("ABCDEFGHI"))
+print(a)
+print()
