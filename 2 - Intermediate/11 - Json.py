@@ -14,14 +14,14 @@ print("*** Dictionary ***")
 print(person)
 print()
 
-# convert into JSON:
+# Convert Dictionary into JSON
 print("*** Convert Dictionary to Json ***")
 
 person_json = json.dumps(person)
 print(person_json)
 print()
 
-# use different formatting style
+# Use different formatting style
 print("*** Use different formatting style ***")
 person_json2 = json.dumps(person, indent=4, sort_keys=True)
 print(person_json2)
