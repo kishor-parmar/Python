@@ -11,6 +11,13 @@ class ValueTooSmallError(Exception):
         self.value = value
 
 
+def test_value(x):
+    if x > 100:
+        raise ValueTooHighError("Value is too high")
+    if x < 5:
+        raise ValueTooSmallError("Value is too small", x)
+
+
 def main():
     try:
         test_value(4)
@@ -19,13 +26,6 @@ def main():
         print(e)
     except ValueTooSmallError as e:
         print(e.message, e.value)
-
-
-def test_value(x):
-    if x > 100:
-        raise ValueTooHighError("Value is too high")
-    if x < 5:
-        raise ValueTooSmallError("Value is too small", x)
 
 
 if __name__ == "__main__":
