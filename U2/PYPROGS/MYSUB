@@ -1,0 +1,6 @@
+SUBROUTINE MYSUB(p1, p2)
+    
+    p2 = "Hello " : p1
+
+    RETURN
+END

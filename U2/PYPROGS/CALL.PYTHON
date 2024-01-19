@@ -1,0 +1,7 @@
+   Program CALL.PYTHON
+
+   NAME = @LOGNAME
+   result = PycallFunction("testInput", "prtGreeting", NAME)
+   
+   Return
+End
