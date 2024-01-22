@@ -1,12 +1,13 @@
 import csv
 
-peak_rate = 29.78
-offpeak_rate = 7.5
-standing_charge = 48.66
+peak_rate = 0.2978
+offpeak_rate = 0.075
+standing_charge = 0.4866
+daily_total = 0
 
 try:
-    f = open("/Users/kishor/Downloads/consumption.csv", encoding="utf8")
-    csv_reader = csv.reader(f)
+    infile = open("/Users/kishor/Downloads/consumption.csv", encoding="utf8")
+    csv_reader = csv.reader(infile)
     for line in csv_reader:
         units = line[0]
         start = line[1][0:20]
@@ -16,6 +17,7 @@ try:
         end_time = end[12:21]
 
         if start_time == "":
+            last_date = "2024-01-01"
             continue
 
         if start_time == "00:00:00":
@@ -30,12 +32,23 @@ try:
             offpeak = True
             peak = False
 
-        print(line)
-        print(
-            f"Units = {units}, Date = {start_date}, Start Time = {start_time}, End Time = {end_time}"
-        )
+        if peak:
+            daily_total += float(peak_rate) * float(units)
+        else:
+            daily_total += float(offpeak_rate) * float(units)
 
-except:
-    print("Cannot open consumption.csv in the Downloads Directory")
-finally:
-    f.close
+        if start_date != last_date:
+            print(f"{start_date} = {daily_total}")
+            last_date = start_date
+            daily_total = 0
+
+        #        print(line)
+        #        print(
+        #            f"Units = {units}, Date = {start_date}, Start Time = {start_time}, End Time = {end_time}, Period = {peak}"
+        #        )
+        infile.close
+
+    print(f"{start_date} = {daily_total}")
+
+except Exception as e:
+    print(e)
