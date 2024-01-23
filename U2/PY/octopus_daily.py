@@ -9,6 +9,21 @@ first_time = True
 
 try:
     infile = open("/Users/kishor/Downloads/consumption.csv", encoding="utf8")
+
+    # Write the rows data to the CSV file with quotes around each field
+    outfile = open("/Users/kishor/Downloads/Daily.csv", "w", newline="")
+    csvwriter = csv.writer(outfile, csv.QUOTE_NONNUMERIC)
+    fields = [
+        "Date",
+        "Peak Units",
+        "Peak Amount",
+        "Off Peak Units",
+        "Off Peak Amount",
+        "Standing Charge",
+        "Daily Total",
+    ]
+    csvwriter.writerow(fields)
+
     csv_reader = csv.reader(infile)
     for line in csv_reader:
         units = line[0]
@@ -37,31 +52,56 @@ try:
             offpeak = True
             peak = False
 
-        if peak:
-            daily_peak_units += float(peak_rate) * float(units)
+        if start_date == last_date:
+            if peak:
+                daily_peak_units += float(units)
+            else:
+                daily_offpeak_units += float(units)
         else:
-            daily_offpeak_units += float(offpeak_rate) * float(units)
-
-        if start_date != last_date:
             peak_amount = daily_peak_units * peak_rate
             offpeak_amount = daily_offpeak_units * offpeak_rate
             daily_total = peak_amount + offpeak_amount + standing_charge
+
+            row = [
+                last_date,
+                daily_peak_units,
+                peak_amount,
+                daily_offpeak_units,
+                offpeak_amount,
+                standing_charge,
+                daily_total,
+            ]
+            csvwriter.writerow(row)
+
             print(
                 f"{last_date}, {daily_peak_units}, {peak_amount}, {daily_offpeak_units}, {offpeak_amount}, {standing_charge}, {daily_total}"
             )
             last_date = start_date
             daily_peak_units = 0
-            daily_off_peak_units = 0
+            daily_offpeak_units = float(units)
 
-    #        print(
-    #            f"Date = {start_date}, Start Time = {start_time}, End Time = {end_time}, Period = {peak}"
-    #        )
+    peak_amount = daily_peak_units * peak_rate
+    offpeak_amount = daily_offpeak_units * offpeak_rate
+    daily_total = peak_amount + offpeak_amount + standing_charge
 
-    infile.close
+    row = [
+        last_date,
+        daily_peak_units,
+        peak_amount,
+        daily_offpeak_units,
+        offpeak_amount,
+        standing_charge,
+        daily_total,
+    ]
 
+    csvwriter.writerow(row)
+    print(row)
     print(
         f"{last_date}, {daily_peak_units}, {peak_amount}, {daily_offpeak_units}, {offpeak_amount}, {standing_charge}, {daily_total}"
     )
+
+    infile.close()
+    outfile.close()
 
 except Exception as e:
     print(e)
