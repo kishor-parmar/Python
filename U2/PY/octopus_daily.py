@@ -73,9 +73,6 @@ try:
             ]
             csvwriter.writerow(row)
 
-            print(
-                f"{last_date}, {daily_peak_units}, {peak_amount}, {daily_offpeak_units}, {offpeak_amount}, {standing_charge}, {daily_total}"
-            )
             last_date = start_date
             daily_peak_units = 0
             daily_offpeak_units = float(units)
@@ -95,10 +92,6 @@ try:
     ]
 
     csvwriter.writerow(row)
-    print(row)
-    print(
-        f"{last_date}, {daily_peak_units}, {peak_amount}, {daily_offpeak_units}, {offpeak_amount}, {standing_charge}, {daily_total}"
-    )
 
     infile.close()
     outfile.close()
