@@ -3,7 +3,9 @@ import csv
 peak_rate = 0.2978
 offpeak_rate = 0.075
 standing_charge = 0.4866
-daily_total = 0
+daily_peak_units = 0
+daily_offpeak_units = 0
+first_time = True
 
 try:
     infile = open("/Users/kishor/Downloads/consumption.csv", encoding="utf8")
@@ -17,8 +19,11 @@ try:
         end_time = end[12:21]
 
         if start_time == "":
-            last_date = "2024-01-01"
             continue
+
+        if first_time:
+            last_date = start_date
+            first_time = False
 
         if start_time == "00:00:00":
             offpeak = True
@@ -33,22 +38,30 @@ try:
             peak = False
 
         if peak:
-            daily_total += float(peak_rate) * float(units)
+            daily_peak_units += float(peak_rate) * float(units)
         else:
-            daily_total += float(offpeak_rate) * float(units)
+            daily_offpeak_units += float(offpeak_rate) * float(units)
 
         if start_date != last_date:
-            print(f"{start_date} = {daily_total}")
+            peak_amount = daily_peak_units * peak_rate
+            offpeak_amount = daily_offpeak_units * offpeak_rate
+            daily_total = peak_amount + offpeak_amount + standing_charge
+            print(
+                f"{last_date}, {daily_peak_units}, {peak_amount}, {daily_offpeak_units}, {offpeak_amount}, {standing_charge}, {daily_total}"
+            )
             last_date = start_date
-            daily_total = 0
+            daily_peak_units = 0
+            daily_off_peak_units = 0
 
-        #        print(line)
-        #        print(
-        #            f"Units = {units}, Date = {start_date}, Start Time = {start_time}, End Time = {end_time}, Period = {peak}"
-        #        )
-        infile.close
+    #        print(
+    #            f"Date = {start_date}, Start Time = {start_time}, End Time = {end_time}, Period = {peak}"
+    #        )
 
-    print(f"{start_date} = {daily_total}")
+    infile.close
+
+    print(
+        f"{last_date}, {daily_peak_units}, {peak_amount}, {daily_offpeak_units}, {offpeak_amount}, {standing_charge}, {daily_total}"
+    )
 
 except Exception as e:
     print(e)
