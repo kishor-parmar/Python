@@ -9,5 +9,6 @@ try:
     writer.writerow(["Kishor Damilola", "40", "Nigeria"])
     writer.writerow(["Alina Hricko", "23", "Ukraine"])
     writer.writerow(["Isabel Walter", "50", "United Kingdom"])
+
 except Exception as e:
     print(e)
