@@ -1,6 +1,36 @@
 import csv
 
 
+def open_infile():
+    infile = open(FILE_PATH + INFILE_NAME, "r", encoding="utf8")
+
+    return infile
+
+
+def open_outfile():
+    outfile = open(FILE_PATH + OUTFILE_NAME, "w", newline="")
+
+    return outfile
+
+
+def print_header():
+    fields = [
+        "Date",
+        "Start time",
+        "End time",
+        "Units",
+        "Rate",
+        "Amount",
+        "Daily Amount",
+        "Standing Charge",
+        "Daily Total",
+    ]
+
+    csvwriter.writerow(fields)
+
+    return
+
+
 def print_row(start_date, start_time, end_time, units, rate, amount):
     row = [
         start_date,
@@ -37,29 +67,21 @@ def print_totals(start_date, daily_total, STANDING_CHARGE):
 PEAK_RATE = 0.2978
 OFFPEAK_RATE = 0.075
 STANDING_CHARGE = 0.4866
+FILE_PATH = "/Users/kishor/Downloads/"
+INFILE_NAME = "consumption.csv"
+OUTFILE_NAME = "Hourly.csv"
 
 daily_total = 0
 first_time = True
 
 
 try:
-    infile = open("/Users/kishor/Downloads/consumption.csv", "r", encoding="utf8")
+    infile = open_infile()
+    outfile = open_outfile()
 
-    # Write the rows data to the CSV file with quotes around each field
-    outfile = open("/Users/kishor/Downloads/Hourly.csv", "w", newline="")
     csvwriter = csv.writer(outfile, csv.QUOTE_NONNUMERIC)
-    fields = [
-        "Date",
-        "Start time",
-        "End time",
-        "Units",
-        "Rate",
-        "Amount",
-        "Daily Amount",
-        "Standing Charge",
-        "Daily Total",
-    ]
-    csvwriter.writerow(fields)
+
+    print_header()
 
     csv_reader = csv.reader(infile)
     for line in csv_reader:
