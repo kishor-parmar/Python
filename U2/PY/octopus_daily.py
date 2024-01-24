@@ -1,14 +1,15 @@
 import csv
 
-peak_rate = 0.2978
-offpeak_rate = 0.075
-standing_charge = 0.4866
+PEAK_RATE = 0.2978
+OFFPEAK_RATE = 0.075
+STANDING_CHARGE = 0.4866
+
 daily_peak_units = 0
 daily_offpeak_units = 0
 first_time = True
 
 try:
-    infile = open("/Users/kishor/Downloads/consumption.csv", encoding="utf8")
+    infile = open("/Users/kishor/Downloads/consumption.csv", "r", encoding="utf8")
 
     # Write the rows data to the CSV file with quotes around each field
     outfile = open("/Users/kishor/Downloads/Daily.csv", "w", newline="")
@@ -58,9 +59,9 @@ try:
             else:
                 daily_offpeak_units += float(units)
         else:
-            peak_amount = daily_peak_units * peak_rate
-            offpeak_amount = daily_offpeak_units * offpeak_rate
-            daily_total = peak_amount + offpeak_amount + standing_charge
+            peak_amount = daily_peak_units * PEAK_RATE
+            offpeak_amount = daily_offpeak_units * OFFPEAK_RATE
+            daily_total = peak_amount + offpeak_amount + STANDING_CHARGE
 
             row = [
                 last_date,
@@ -68,7 +69,7 @@ try:
                 peak_amount,
                 daily_offpeak_units,
                 offpeak_amount,
-                standing_charge,
+                STANDING_CHARGE,
                 daily_total,
             ]
             csvwriter.writerow(row)
@@ -81,9 +82,9 @@ try:
                 daily_peak_units = 0
                 daily_offpeak_units = float(units)
 
-    peak_amount = daily_peak_units * peak_rate
-    offpeak_amount = daily_offpeak_units * offpeak_rate
-    daily_total = peak_amount + offpeak_amount + standing_charge
+    peak_amount = daily_peak_units * PEAK_RATE
+    offpeak_amount = daily_offpeak_units * OFFPEAK_RATE
+    daily_total = peak_amount + offpeak_amount + STANDING_CHARGE
 
     row = [
         last_date,
@@ -91,7 +92,7 @@ try:
         peak_amount,
         daily_offpeak_units,
         offpeak_amount,
-        standing_charge,
+        STANDING_CHARGE,
         daily_total,
     ]
 
