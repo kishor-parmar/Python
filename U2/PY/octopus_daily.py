@@ -69,6 +69,24 @@ def print_row(
     return
 
 
+def get_peak_amount(daily_peak_units):
+    x = daily_peak_units * PEAK_RATE
+
+    return x
+
+
+def get_offpeak_amount(daily_offpeak_units):
+    x = daily_offpeak_units * OFFPEAK_RATE
+
+    return x
+
+
+def get_daily_total(peak_amount, offpeak_amount):
+    x = peak_amount + offpeak_amount + STANDING_CHARGE
+
+    return x
+
+
 def main():
     daily_peak_units = 0
     daily_offpeak_units = 0
@@ -116,9 +134,9 @@ def main():
                 else:
                     daily_offpeak_units += float(units)
             else:
-                peak_amount = daily_peak_units * PEAK_RATE
-                offpeak_amount = daily_offpeak_units * OFFPEAK_RATE
-                daily_total = peak_amount + offpeak_amount + STANDING_CHARGE
+                peak_amount = get_peak_amount(daily_peak_units)
+                offpeak_amount = get_offpeak_amount(daily_offpeak_units)
+                daily_total = get_daily_total(peak_amount, offpeak_amount)
 
                 print_row(
                     csvwriter,
@@ -139,9 +157,9 @@ def main():
                     daily_peak_units = 0
                     daily_offpeak_units = float(units)
 
-        peak_amount = daily_peak_units * PEAK_RATE
-        offpeak_amount = daily_offpeak_units * OFFPEAK_RATE
-        daily_total = peak_amount + offpeak_amount + STANDING_CHARGE
+            peak_amount = get_peak_amount(daily_peak_units)
+            offpeak_amount = get_offpeak_amount(daily_offpeak_units)
+            daily_total = get_daily_total(peak_amount, offpeak_amount)
 
         print_row(
             csvwriter,
