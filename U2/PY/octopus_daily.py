@@ -28,6 +28,47 @@ def open_outfile():
     return outfile
 
 
+def print_header(csvwriter):
+    fields = [
+        "Date",
+        "Peak Units",
+        "Peak Amount",
+        "Off Peak Units",
+        "Off Peak Amount",
+        "Standing Charge",
+        "Daily Total",
+    ]
+
+    csvwriter.writerow(fields)
+
+    return
+
+
+def print_row(
+    csvwriter,
+    last_date,
+    daily_peak_units,
+    peak_amount,
+    daily_offpeak_units,
+    offpeak_amount,
+    STANDING_CHARGE,
+    daily_total,
+):
+    row = [
+        last_date,
+        daily_peak_units,
+        peak_amount,
+        daily_offpeak_units,
+        offpeak_amount,
+        STANDING_CHARGE,
+        daily_total,
+    ]
+
+    csvwriter.writerow(row)
+
+    return
+
+
 def main():
     daily_peak_units = 0
     daily_offpeak_units = 0
@@ -38,16 +79,8 @@ def main():
         outfile = open_outfile()
 
         csvwriter = csv.writer(outfile, csv.QUOTE_NONNUMERIC)
-        fields = [
-            "Date",
-            "Peak Units",
-            "Peak Amount",
-            "Off Peak Units",
-            "Off Peak Amount",
-            "Standing Charge",
-            "Daily Total",
-        ]
-        csvwriter.writerow(fields)
+
+        print_header(csvwriter)
 
         csv_reader = csv.reader(infile)
         for line in csv_reader:
@@ -87,7 +120,8 @@ def main():
                 offpeak_amount = daily_offpeak_units * OFFPEAK_RATE
                 daily_total = peak_amount + offpeak_amount + STANDING_CHARGE
 
-                row = [
+                print_row(
+                    csvwriter,
                     last_date,
                     daily_peak_units,
                     peak_amount,
@@ -95,8 +129,7 @@ def main():
                     offpeak_amount,
                     STANDING_CHARGE,
                     daily_total,
-                ]
-                csvwriter.writerow(row)
+                )
 
                 last_date = start_date
                 if peak:
@@ -110,7 +143,8 @@ def main():
         offpeak_amount = daily_offpeak_units * OFFPEAK_RATE
         daily_total = peak_amount + offpeak_amount + STANDING_CHARGE
 
-        row = [
+        print_row(
+            csvwriter,
             last_date,
             daily_peak_units,
             peak_amount,
@@ -118,9 +152,7 @@ def main():
             offpeak_amount,
             STANDING_CHARGE,
             daily_total,
-        ]
-
-        csvwriter.writerow(row)
+        )
 
         infile.close()
         outfile.close()
