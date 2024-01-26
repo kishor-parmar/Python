@@ -1,4 +1,5 @@
 import csv
+from io import TextIOWrapper
 
 PEAK_RATE = 0.2978
 OFFPEAK_RATE = 0.075
@@ -9,19 +10,19 @@ INFILE_NAME = "consumption.csv"
 OUTFILE_NAME = "Daily.csv"
 
 
-def open_infile():
+def open_infile() -> TextIOWrapper:
     infile = open(FILE_PATH + INFILE_NAME, "r", encoding="utf8")
 
     return infile
 
 
-def open_outfile():
+def open_outfile() -> TextIOWrapper:
     outfile = open(FILE_PATH + OUTFILE_NAME, "w", newline="")
 
     return outfile
 
 
-def print_header(csvwriter):
+def print_header(csvwriter) -> None:
     fields = [
         "Date",
         "Peak Units",
@@ -46,7 +47,7 @@ def print_row(
     offpeak_amount,
     STANDING_CHARGE,
     daily_total,
-):
+) -> None:
     row = [
         last_date,
         daily_peak_units,
@@ -62,19 +63,19 @@ def print_row(
     return
 
 
-def get_peak_amount(daily_peak_units):
+def get_peak_amount(daily_peak_units) -> None:
     x = daily_peak_units * PEAK_RATE
 
     return x
 
 
-def get_offpeak_amount(daily_offpeak_units):
+def get_offpeak_amount(daily_offpeak_units) -> None:
     x = daily_offpeak_units * OFFPEAK_RATE
 
     return x
 
 
-def get_daily_total(peak_amount, offpeak_amount):
+def get_daily_total(peak_amount, offpeak_amount) -> None:
     x = peak_amount + offpeak_amount + STANDING_CHARGE
 
     return x

@@ -1,4 +1,5 @@
 import csv
+from io import TextIOWrapper
 
 
 PEAK_RATE = 0.2978
@@ -10,19 +11,19 @@ INFILE_NAME = "consumption.csv"
 OUTFILE_NAME = "Hourly.csv"
 
 
-def open_infile():
+def open_infile() -> TextIOWrapper:
     infile = open(FILE_PATH + INFILE_NAME, "r", encoding="utf8")
 
     return infile
 
 
-def open_outfile():
+def open_outfile() -> TextIOWrapper:
     outfile = open(FILE_PATH + OUTFILE_NAME, "w", newline="")
 
     return outfile
 
 
-def print_header(csvwriter):
+def print_header(csvwriter) -> None:
     fields = [
         "Date",
         "Start time",
@@ -40,7 +41,7 @@ def print_header(csvwriter):
     return
 
 
-def print_row(csvwriter, start_date, start_time, end_time, units, rate, amount):
+def print_row(csvwriter, start_date, start_time, end_time, units, rate, amount) -> None:
     row = [
         start_date,
         start_time,
@@ -55,7 +56,7 @@ def print_row(csvwriter, start_date, start_time, end_time, units, rate, amount):
     return
 
 
-def print_totals(csvwriter, start_date, daily_total, STANDING_CHARGE):
+def print_totals(csvwriter, start_date, daily_total, STANDING_CHARGE) -> None:
     row = [
         start_date,
         "",
