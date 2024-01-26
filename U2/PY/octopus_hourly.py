@@ -1,11 +1,5 @@
 import csv
 
-global PEAK_RATE
-global OFFPEAK_RATE
-global STANDING_CHARGE
-global FILE_PATH
-global INFILE_NAME
-global OUTFILE_NAME
 
 PEAK_RATE = 0.2978
 OFFPEAK_RATE = 0.075
