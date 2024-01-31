@@ -1,7 +1,7 @@
-# pytest test_hello.py
+# pytest test_hello.py -v
 #      or
 # cd Tests
-# pytest test
+# pytest test -v
 #
 
 from hello import hello
