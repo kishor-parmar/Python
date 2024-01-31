@@ -4,7 +4,9 @@
 # pytest test -v
 #
 
-from hello import hello
+import pytest
+
+from source.hello import hello
 
 
 def test_default():
