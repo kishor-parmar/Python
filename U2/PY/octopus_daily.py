@@ -1,13 +1,9 @@
+# Routine Calculate
+
 import csv
 from io import TextIOWrapper
 
-PEAK_RATE = 0.2978
-OFFPEAK_RATE = 0.075
-STANDING_CHARGE = 0.4866
-
-FILE_PATH = "/Users/kishor/Downloads/"
-INFILE_NAME = "consumption.csv"
-OUTFILE_NAME = "Daily.csv"
+from octopus_const import *
 
 
 def open_infile() -> TextIOWrapper:
@@ -17,7 +13,7 @@ def open_infile() -> TextIOWrapper:
 
 
 def open_outfile() -> TextIOWrapper:
-    outfile = open(FILE_PATH + OUTFILE_NAME, "w", newline="")
+    outfile = open(FILE_PATH + DAILY_NAME, "w", newline="")
 
     return outfile
 
