@@ -1,8 +1,13 @@
 #
 # Tests git:(main) ✗ pytest tests/test_my_functions.py -v
+#    or
+# cd test
+# pytest test_my_functions.py -v
 #
+# pytest -m slow
 
 import pytest
+import time
 
 import source.my_functions as my_functions
 
@@ -22,6 +27,23 @@ def test_divide():
     assert result == 10
 
 
+@pytest.mark.slow
 def test_divide_by_zero():
     with pytest.raises(ValueError):
         my_functions.divide(10, 0)
+
+
+def test_very_slow():
+    time.sleep(5)
+    result = my_functions.divide(50, 5)
+    assert result == 10
+
+
+@pytest.mark.skip(reason="This feature is currently broken")
+def test_add():
+    assert my_functions.add(2, 5) == 7
+
+
+@pytest.mark.xfail(reason="We know we cannot divide by zero")
+def test_divide_zero_broken():
+    my_functions.divide(50, 0)
