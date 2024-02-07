@@ -1,3 +1,5 @@
+# pytest tests/test_square.py -v
+
 import pytest
 
 import source.shapes as shapes
