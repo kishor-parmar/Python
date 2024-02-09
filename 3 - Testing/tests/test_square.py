@@ -1,3 +1,7 @@
+#
+# cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Respositories
+# cd 3\ -\ Testing
+#
 # pytest tests/test_square.py -v
 
 import pytest

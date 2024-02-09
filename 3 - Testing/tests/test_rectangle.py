@@ -1,4 +1,7 @@
 #
+# cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Respositories
+# cd 3\ -\ Testing
+#
 # Tests git:(main) ✗ pytest tests/test_my_functions.py -v
 #
 

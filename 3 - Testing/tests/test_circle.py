@@ -1,4 +1,7 @@
 #
+# cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Respositories
+# cd 3\ -\ Testing
+#
 # Tests git:(main) ✗  pytest tests/test_circle.py -v -s
 #     or
 # Tests git:(main) ✗ cd tests
