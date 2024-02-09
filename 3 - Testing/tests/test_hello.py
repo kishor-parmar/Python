@@ -2,7 +2,7 @@
 # cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Respositories
 # cd 3\ -\ Testing
 #
-# pytest test_hello.py -v
+# pytest tests/test_hello.py -v
 #      or
 # cd Tests
 # pytest test -v
