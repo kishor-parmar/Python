@@ -7,6 +7,7 @@ def main():
 
 
 def hello(to="world"):
+    ic(to)
     return f"Hello, {to}"
 
 
