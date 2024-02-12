@@ -1,3 +1,7 @@
+# brew services start mongodb-community@7.0
+#
+# brew services stop mongodb-community@7.0
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
