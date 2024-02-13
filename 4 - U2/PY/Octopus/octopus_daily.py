@@ -1,7 +1,9 @@
 # Routine Calculate
 
 import csv
+
 from io import TextIOWrapper
+from datetime import datetime
 
 from octopus_const import *
 
@@ -93,11 +95,11 @@ def main():
         csv_reader = csv.reader(infile)
         for line in csv_reader:
             units = line[0]
-            start = line[1][0:20]
-            end = line[2][0:20]
-            start_date = start[0:11]
-            start_time = start[12:21]
-            end_time = end[12:21]
+            start = line[1][0:20].lstrip()
+            end = line[2][0:20].lstrip()
+            start_date = start[0:10]
+            start_time = start[11:20]
+            end_time = end[11:20]
 
             if start_time == "":
                 continue
