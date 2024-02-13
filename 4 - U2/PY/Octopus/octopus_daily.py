@@ -61,19 +61,19 @@ def print_row(
     return
 
 
-def get_peak_amount(daily_peak_units) -> None:
+def get_peak_amount(daily_peak_units) -> str:
     x = daily_peak_units * PEAK_RATE
 
     return x
 
 
-def get_offpeak_amount(daily_offpeak_units) -> None:
+def get_offpeak_amount(daily_offpeak_units) -> str:
     x = daily_offpeak_units * OFFPEAK_RATE
 
     return x
 
 
-def get_daily_total(peak_amount, offpeak_amount) -> None:
+def get_daily_total(peak_amount, offpeak_amount) -> str:
     x = peak_amount + offpeak_amount + STANDING_CHARGE
 
     return x
