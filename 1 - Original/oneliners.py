@@ -121,6 +121,6 @@ my_list2 = [line.replace(" ", "") for line in open("person.txt", "r")]
 print(my_list2)
 # ['TomSmith\n', 'MikeJones\n', 'PaulMac\n', 'JohnBrown\n', '']
 
-my_list3 = ["".join(line.split()) for line in open("person.txt", "r")]
+my_list3 = [" ".join(line.split()) for line in open("person.txt", "r")]
 print(my_list3)
-# ['TomSmith', 'MikeJones', 'PaulMac', 'JohnBrown', '']
+# ['Tom Smith', 'Mike Jones', 'Paul Mac', 'John Brown', '']
