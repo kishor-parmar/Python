@@ -1,3 +1,10 @@
+#
+# cd 3\ -\ Testing
+#
+# pytest tests/test_todo_api.py -v -s
+#
+
+
 import requests
 import uuid
 
