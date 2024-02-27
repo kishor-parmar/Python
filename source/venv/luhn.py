@@ -39,7 +39,7 @@ def main() -> None:
         name="Kish",
         phone="2341",
         cc_number="1249190007575069",
-        cc_exp_month=3,
+        cc_exp_month=1,
         cc_exp_year=2024,
     )
     is_valid = validate_card(alice)
