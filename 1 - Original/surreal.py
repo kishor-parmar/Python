@@ -28,7 +28,6 @@ async def main():
             )
         )
         print(await db.delete("person"))
-        print("xx")
 
         # You can also use the query method
         # doing all of the above and more in SurrealQl
