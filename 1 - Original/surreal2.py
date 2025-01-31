@@ -1,6 +1,7 @@
 # Import the Surreal class
 from surrealdb import Surreal
 
+
 # Using a context manger to automatically connect and disconnect
 with Surreal("ws://localhost:8000/rpc") as db:
     db.signin({"username": "root", "password": "root"})
